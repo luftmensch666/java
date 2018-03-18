@@ -1,3 +1,4 @@
+/*
 OOP
 	oriented object program
 
@@ -7,3 +8,25 @@ OOP
   主类（栈中）<-------------------成员/方法（堆中）
   局部变量在主类中
   成员变量/函数在分类中
+*/
+public class test{
+	public static void main(String[] agrs) {
+		int a;       //局部变量
+		Dog p = new Dog();//创建Dog类的对象
+		System.out.println(p);
+		System.out.println(p.name);  //调用成员变量
+		System.out.println(p.color);
+		p.watch();
+		p.cathMouse();
+	}
+}
+class Dog{			       //创建类--Dog
+	String name = "big yellow";   //成员变量
+	String color = "yellow";
+	void watch(){			        //成员函数
+		System.out.println("watch home");
+	}
+	void cathMouse(){
+		System.out.println("抓老鼠");
+	}
+}
