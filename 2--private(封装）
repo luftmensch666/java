@@ -7,14 +7,12 @@
 
 import java.util.Scanner;
 
-public class $$$ {
+class $$$ {
     public static void main(String[] args){
         Man man = new Man();
   //      System.out.println(man.maney);     //error: maney为私有类型，无法访问
-        Scanner input = new Scanner(System.in);
-        System.out.println("请输入红包金额：");
-        int hongbao = input.nextInt();
-        man.addManey(hongbao);
+        man.addManey();
+        System.out.print("原金额：1000\n剩余金额：");
         System.out.println(man.getManey());
         }
 }
@@ -23,7 +21,18 @@ class Man{
    public int getManey(){          //在同类中私有类型变量不受控
        return maney;
    }
-   public int addManey(int num){          //私有类型变量只能从函数中修改
+   public int addManey(){          //私有类型变量只能从函数中修改
+       Scanner input = new Scanner(System.in);
+       System.out.println("请输入红包金额：");
+       int num = input.nextInt();
+       while(num <= 0){
+           System.out.println("请输入正数！！！ \n请输入：");
+           num = input.nextInt();
+       }
+       while(num < 100 && num > 0){
+           System.out.println("红包金额太少请重新输入！\n请输入:");
+           num = input.nextInt();
+       }
        maney = maney + num ;
        return maney;
    }
