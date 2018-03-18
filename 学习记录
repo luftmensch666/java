@@ -1,0 +1,9 @@
+OOP
+	oriented object program
+
+类--class
+  栈（stack）、堆（heap）
+              压栈（push)弹栈（pop）               --method frame(方法帧）//像弹夹中的子弹         
+  主类（栈中）<-------------------成员/方法（堆中）
+  局部变量在主类中
+  成员变量/函数在分类中
