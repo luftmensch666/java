@@ -7,7 +7,7 @@
 
 import java.util.Scanner;
 
-class $$$ {
+class Test2{
     public static void main(String[] args){
         Man man = new Man();
   //      System.out.println(man.maney);     //error: maney为私有类型，无法访问
