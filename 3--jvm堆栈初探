@@ -1,0 +1,46 @@
+/*
+    java的栈空间
+    ---------------------
+      java -X;
+      java -Xss<size> <class文件>  //设置stack的大小
+      java 栈默认是1M, 至少是108K， 通过
+
+    java的堆空间
+    --------------------
+      java默认堆空间是物理内存的1/8，最大值是物理内存的1/4；
+      java -Xmx<size> -Xms<size> <class文件> //Xmx 设置堆最大值，-Xms设置堆初始值
+*/
+
+
+//代码实例
+public class test3 {
+    public static void main(String[] agrs) {
+        testStack();
+        testStack2(1);
+        testHeap();
+        testHeap2();
+    }
+    //测试栈空间
+    //死循环(输出相同 --> 替换)
+    public static void testStack() {
+        while (true) {                    //没有溢出 --> 在栈中,死循环push后紧接着pop再继续push...
+            System.out.println("hello world");
+        }
+    }
+    //死递归                                //溢出
+    public static void testStack2(int i) {
+        System.out.println(i + "hello world")；
+    }
+
+    //测似堆空间
+    public static void testHeap(){
+        byte[] arr = new byte[1024 * 1024 * 500];
+        System.out.println(arr);                //物理内存瞬间增长1G 没有溢出
+    }
+
+    public static void testHeap2(){
+        int size = 1024 * 1024 * 1024 ;
+        byte[][] arr = new byte[4][size];
+        System.out.println(arr);                //溢出
+    }
+}
