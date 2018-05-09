@@ -1,0 +1,75 @@
+/*
+构造函数 
+----------------
+	construct
+	1.函数和类同名
+	2.不需要定义返回类型
+	3.没有具体的返回值
+	4.作用是初始化对象
+
+类成员
+---------
+	1.成员变量
+	2.成员函数
+	3.构造函数
+	4.构造代码块-->给对象初始化
+	5.静态代码块-->给类初始化
+	
+构造代码块
+------------------
+	{
+ 	}
+	优先于构造函数
+	对象一建立就运行构造代码块
+  
+对象创建过程
+---------------------
+	1.在内存中分配内存空间
+	2.对成员变量赋默认值
+	3.执行构造代码块，如果多个，从上到下按序执行
+	4.成员变量赋初值
+	5.构造函数
+	
+A&Q
+  //构造函数为什么没有返回值类型
+  	返回的就是该类的类型，没必要定义返回值类型（但构造函数可以有return，返回对象的实例）
+  //为什么构造代码块可以访问之后定义的成员变量       
+  	匿名方法 在栈中提前执行
+  //静态和非静态成员的区别    
+  	静态成员 与类有关，与类共存亡
+  	非静态成员 ，与对象有关，实例的方法，通过对象访问，没有对象就没有它
+  //什么时候使用this
+  	在类的内部，通过this访问当前对象，一个指向自身的指针
+  //构造函数调用其它构造函数的方式
+  	this()
+*/
+
+//代码实例
+public class Test4 {
+    public static void main(String[] args) {
+        Dogs dahuang = new Dogs("xiaobai", "red");       //构造函数的参数
+        System.out.println(dahuang.name + "\n" + dahuang.color);
+        dahuang.watch();
+    }
+}
+class Dogs{
+    String name;
+    String color;
+
+    public Dogs(String a){                   //构造函数
+        name = a;
+        System.out.println("construct");
+    }
+
+    public Dogs(String a, String b) {        //构造函数
+        name = a;
+        color = b;
+        System.out.println("construct2");
+    }
+
+    public void watch(){
+        System.out.println("汪汪汪---");
+    }
+}
+
+
