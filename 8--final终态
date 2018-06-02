@@ -1,0 +1,33 @@
+/*final
+--------------------
+	修饰方法、类、变量
+	修饰类（终态类）
+		不能继承
+	修饰方法
+		不能重写
+	修饰变量（常量)
+		不能修改
+		常量：static + final 修饰
+*/
+//代码示例
+public class Test8 {
+    public static void main(String[] args){
+        limao ala = new limao();
+        System.out.println(ala.name);
+        ala.miaow();
+        System.out.println(ala.a);
+    }
+}
+/*final*/ class Cat{
+    final int a = 1;
+    public static final String name = "二哈";    //final修饰的变量不能被改变（常量）
+    public /*final*/ void miaow(){             //final修饰的方法不能被重写
+        System.out.println("maio miao miao");
+    }
+}
+class limao extends Cat{
+    public void miaow(){
+        System.out.println("maio miao miao miao");
+        super.miaow();
+    }
+}
