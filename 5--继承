@@ -1,0 +1,41 @@
+/*继承                                //考察构造**
+------------------
+	1.抽象出共性
+		多个类中存在相同属性和行为时，将这些内容抽取到单独一个类中，多个类无需再定义这些属性和行为，只需继承那个类即可。
+	2.单独这个类成为父类（超类），多个类成为子类。
+	3.子类可以访问父类的非私有（privat）成员
+	4.通过extends继承
+	5.类只支持单重继承（一个类只有一个父类） + 多层继承
+	class Dog extends Animal{
+		...
+	}
+	//继承的出现类与类之间产生了关系，提供了多态的前提
+	//**是**的一种
+  */
+  
+  //代码示例
+  public class Test5 {
+    public static void main(String[] args){
+        Jing8 jing8 = new Jing8();
+        jing8.name = "small baba";
+        jing8.watch();
+        jing8.bloodType();
+    }
+}
+
+class Animal{
+    public String name;
+    public int age;
+    public String color;
+}
+
+class Dog extends Animal{
+    public void watch(){
+        System.out.println("someone comming!!!!");
+    }
+}
+
+class Jing8 extends Dog{
+    public void bloodType(){
+        System.out.println("AB");
+    }
