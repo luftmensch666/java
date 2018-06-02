@@ -1,0 +1,68 @@
+/*super             -->// this
+-------------------
+	类内置的成员变量，指向的是父类对象的引用。只能在类的内部使用，类似与this；
+	如果当前类有和父类名称相同的成员，若访问父类成员，需要用super.
+super()              -->//  this()
+-------------------
+		调用父/子类的构造函数,必须是第一条语句。
+
+super 代表父类内存空间的标识;当子类（this）出现同名成员时，可以用super进行区分	
+*/
+
+//代码示例
+public class Test6 {
+    public static void main(String[] agrs){
+        BWM myCar = new BWM();
+//        myCar.setColorPro("black");
+//        System.out.println(myCar.getColor());
+//        myCar.velocity = 200;
+//        myCar.price = 300000;
+    }
+}
+
+class Car{
+    private String color;
+    {
+        System.out.println("Cons Block in Car");
+    }
+    public String getColor() {
+        return color;
+    }
+    public void setColor(String color) {
+        this.color = color;
+    }
+    public void run(){
+        System.out.println("run----");
+    }
+}
+
+class sportCar extends Car{
+    public int velocity;   //速度
+    {
+        System.out.println("Cons Block in sportCar");
+    }
+    public sportCar(int velocity){
+        this.velocity = velocity;
+        System.out.println("new sportCar("+velocity+")");
+    }
+    public void setColor(String color){
+        System.out.println("new sportCar("+color+")");
+        super.setColor(color);
+    }
+    public void setColorPro(String color) {
+        System.out.println("是好漆吗？");
+//        this.setColor(color);
+        super.setColor(color);
+    }
+}
+
+class BWM extends sportCar{
+    public int price;
+    {
+        System.out.println("Cons Block in BWM");
+    }
+    public BWM(){
+        super(200);
+        System.out.println("new BWM("+velocity+")");
+    }
+}
