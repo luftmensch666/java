@@ -1,0 +1,63 @@
+/*方法重载（overload）
+-------------------
+	继承是前提条件。
+	方法名相同，参数列表不同
+		//参数列表又叫参数签名，指三样东西：参数的类型，参数的个数，参数的顺序。这三者只要有一个不同就叫做参数列表不同。
+	子类中的方法和父类中继承下来的方法均可以发生重载	
+	
+方法覆盖/重写（override）
+-------------------
+	在当父类中的某些方法不能满足要求时，子类中改写父类的方法。当父类中的方法被覆盖了后，除非用super关键字，否则就无法再调用父类中的方法了
+	1.和父类参数列表相同
+	2.private方法无法覆盖
+	3.除非用super关键字，否则无法调用父类中的方法
+	注意事项：
+		权限要大于等于父类权限
+		public > ... > private
+		静态和非静态必须是一致的
+	
+overload  vs override
+----------------------------
+	成员变量不能重载，只能覆盖。
+	父类的一个方法只能被子类覆盖一次，而一个方法可以在所有的类中可以被重载多次。
+	方法覆盖要求返回类型必须一致，方法重载对此没有要求。
+	方法覆盖只能用于子类覆盖父类的方法，方法重载用于同一个类中的所有方法（包括从父类中继承而来的方法）
+	方法覆盖对方法的访问权限和抛出的异常有特殊的要求，而方法重载在这方面没有任何限制。
+  */
+  
+  //代码示例
+  public class Test7 {
+    public static void main(String[] agrs){
+        Rich2Man s2 = new Rich2Man();
+        Rich3Man s3 = new Rich3Man();
+        s2.consume(1000);
+        s3.consume(10000.0);
+    }
+}
+class RichMan {
+    public static void consume(int money) {
+        if (money < 500) {
+            System.out.println("消费了" + money + "k");
+        } else {
+            System.out.println("消费限额！消费不能超过5000k");
+        }
+    }
+}
+class Rich2Man extends RichMan {    //方法覆盖/重写
+    public static void consume(int money) {
+        if (money <= 10000) {
+            System.out.println("消费了" + money + "k");
+        } else {
+            System.out.println("消费限额！消费不能超过10000k");
+        }
+    }
+}
+class Rich3Man extends RichMan{        //方法重载
+    public static void consume(double money) {
+        if (money <= 20000) {
+            System.out.println("消费了" + money + "k");
+        } else {
+            System.out.println("消费限额！消费不能超过20000k");
+        }
+    }
+}
