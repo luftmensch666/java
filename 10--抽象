@@ -1,0 +1,37 @@
+/*
+抽象abstract
+---------------
+	抽象
+		从多个事物中将共性、本质的内容抽取出来
+	抽象类
+		不能实例化成对象的类。
+		抽象类通过其子类实例化，子类需要覆盖掉抽象类中所有抽象方法，否则子类也是抽象类 
+	抽象方法   
+		没有方法体
+		修饰符 abstract 返回值类型 函数名（参数列表）;
+		多个对象都具备相同的功能，但功能具体内容不同，在抽取过程中，只抽取了定义，未抽取主体只有功能声明，没有功能主体方法叫抽象方法
+*/
+
+public class Text10 {
+    public static void main(String[] args) {
+        Cat cat = new Cat();
+        cat.cry();
+    }
+}
+abstract class Animal{
+        public String name;
+        public Animal(String name){           //抽象类的构造函数若带参，子类必须重写
+            System.out.println("my name is " + name);
+        }
+        ///抽象方法
+        public abstract void cry();
+}
+class Cat extends Animal{           //具体类不能有抽象方法
+    @Override
+    public void cry() {
+        System.out.println("miaomiaomiao~~");
+    }
+    public Cat(){
+        super("aoliao");
+    }
+}
