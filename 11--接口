@@ -1,0 +1,60 @@
+/*
+接口 interface
+----------------------
+	class *** implements White{...}
+	1.成员修饰符固定     //接口的成员都是public修饰
+		public static final  //成员变量
+		public abstract		 //成员函数
+	2.接口中所有方法都必须抽象
+	3.通过接口间接实现多重继承
+	
+	4.最低标准
+		耦合度低
+	5.接口与接口之间可以有继承关系
+			
+	特点：
+		对外暴露
+		程序的功能拓展
+		降低耦合性
+		可以用来多实现
+		类与接口是多实现关系，类可以继承一个类同时实现多个接口
+		接口与接口之间可以有继承关系
+*/
+代码示例：
+  public class Text11 {
+      public  static  void main(String[] args){
+          Mouse mouse = new Mouse();
+          camera camera = new camera();
+          mp3 mp3 = new mp3();
+          PC  pc = new PC();
+          pc.insertUSB(mouse);          //将鼠标插入PC
+          pc.insertUSB(mp3);            //将mp3插入PCD
+          pc.insertUSB(camera);            //将相机插入PCD
+      }
+  }
+  class PC{
+      public void insertUSB(USB usb){
+          System.out.println("插入了usb设备-->");
+          usb.play();
+      }
+  }
+  //定义接口
+  interface USB{
+      void play();  //默认抽象
+  }
+  //类实现了接口--implements
+  class Mouse implements USB{
+      public void play(){
+          System.out.println("鼠标");
+      }
+  }
+  class camera implements USB{
+      public void play(){
+          System.out.println("相机");
+      }
+  }
+  class mp3 implements USB{
+      public void play(){
+          System.out.println("mp3");
+      }
+}
