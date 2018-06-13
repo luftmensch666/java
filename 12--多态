@@ -1,0 +1,37 @@
+/*
+多态
+---------------
+	定义某类事物的多种存在形态
+	使用父类引用子类对象
+	使用接口引用实现类的对象
+	
+	实例化（继承关系）：
+		前大后小。
+*/
+代码示例：
+  public class Duotai {
+      public static void main(String[] args) {
+          Taidi taidi = new Taidi();
+          Dog dog = taidi;
+  
+          taidi.cry();
+          dog.cry();
+          System.out.println(taidi.name);
+          System.out.println(dog.name);
+      }
+  }
+  abstract class Animal{
+      abstract public void cry();
+  }
+  class Dog extends Animal{
+      String name = "大黄";
+      public void cry(){
+          System.out.println("汪汪汪---");
+      }
+  }
+  class Taidi extends Dog{
+      String name = "大绿";
+      public void cry(){
+          System.out.println("heihei");
+      }
+  }
